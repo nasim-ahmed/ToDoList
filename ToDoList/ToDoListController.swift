@@ -38,7 +38,6 @@ class ToDoListController: UITableViewController{
             guard let textField = alert.textFields?.first,
                 let nameToSave = textField.text else {
                return
-            
             }
             
             self.save(name: nameToSave)
@@ -52,14 +51,9 @@ class ToDoListController: UITableViewController{
         alert.addAction(cancelAction)
         
         present(alert, animated:true)
-        
-       
-    
     }
     
     func save(name: String){
-        
-        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -81,9 +75,6 @@ class ToDoListController: UITableViewController{
         }catch _ as NSError{
            print("Could not save")
         }
-        
-    
-    
     }
     
     
@@ -107,16 +98,13 @@ class ToDoListController: UITableViewController{
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-        
-        
+       
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         
-        
         let managedContext = appDelegate.persistentContainer.viewContext
-        
-        
+       
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
         
         do{
@@ -127,12 +115,4 @@ class ToDoListController: UITableViewController{
         
         }
     }
-
-    
-    
-    
-
-
-
-
 }
